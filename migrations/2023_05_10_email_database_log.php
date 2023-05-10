@@ -24,6 +24,8 @@ return new class extends Migration
             $table->text('body');
             $table->text('headers')->nullable();
             $table->longText('attachments')->nullable();
+
+            $table->timestamps();
         });
     }
 
