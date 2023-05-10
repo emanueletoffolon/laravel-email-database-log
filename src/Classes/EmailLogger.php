@@ -1,10 +1,10 @@
 <?php
 
-namespace ShvetsGroup\LaravelEmailDatabaseLog;
+namespace EmanueleToffolon\LaravelEmailDatabaseLog\Classes;
 
 use Carbon\Carbon;
+use EmanueleToffolon\LaravelEmailDatabaseLog\Models\EmailLog;
 use Symfony\Component\Mime\Email;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\Mime\Part\DataPart;
 use Illuminate\Mail\Events\MessageSending;
 
@@ -20,17 +20,17 @@ class EmailLogger
 	{
 		$message = $event->message;
 
-		DB::table('email_log')->insert([
-			'date' => Carbon::now()->format('Y-m-d H:i:s'),
-			'from' => $this->formatAddressField($message, 'From'),
-			'to' => $this->formatAddressField($message, 'To'),
-			'cc' => $this->formatAddressField($message, 'Cc'),
-			'bcc' => $this->formatAddressField($message, 'Bcc'),
-			'subject' => $message->getSubject(),
-			'body' => $message->getBody()->bodyToString(),
-			'headers' => $message->getHeaders()->toString(),
-			'attachments' => $this->saveAttachments($message),
-		]);
+        EmailLog::create([
+            'date' => Carbon::now()->format('Y-m-d H:i:s'),
+            'from' => $this->formatAddressField($message, 'From'),
+            'to' => $this->formatAddressField($message, 'To'),
+            'cc' => $this->formatAddressField($message, 'Cc'),
+            'bcc' => $this->formatAddressField($message, 'Bcc'),
+            'subject' => $message->getSubject(),
+            'body' => $message->getBody()->bodyToString(),
+            'headers' => $message->getHeaders()->toString(),
+            'attachments' => $this->saveAttachments($message),
+        ]);
 	}
 
 	/**

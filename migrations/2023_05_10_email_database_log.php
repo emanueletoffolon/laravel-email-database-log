@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class EmailLog extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +13,8 @@ class EmailLog extends Migration
      */
     public function up()
     {
-        Schema::create('email_log', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('email_log', static function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->dateTime('date');
             $table->string('from')->nullable();
             $table->string('to')->nullable();
@@ -22,7 +23,7 @@ class EmailLog extends Migration
             $table->string('subject');
             $table->text('body');
             $table->text('headers')->nullable();
-            $table->text('attachments')->nullable();
+            $table->longText('attachments')->nullable();
         });
     }
 
@@ -35,4 +36,4 @@ class EmailLog extends Migration
     {
         Schema::drop('email_log');
     }
-}
+};

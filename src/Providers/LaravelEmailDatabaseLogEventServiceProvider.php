@@ -1,7 +1,8 @@
 <?php
 
-namespace ShvetsGroup\LaravelEmailDatabaseLog;
+namespace EmanueleToffolon\LaravelEmailDatabaseLog\Providers;
 
+use EmanueleToffolon\LaravelEmailDatabaseLog\Classes\EmailLogger;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Mail\Events\MessageSending;
 

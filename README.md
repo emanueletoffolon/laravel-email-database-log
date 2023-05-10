@@ -19,7 +19,7 @@ You can skip this step if your version of Laravel is 5.5 or above. Otherwise, yo
 ```php
 'providers' => [
     // ...
-    ShvetsGroup\LaravelEmailDatabaseLog\LaravelEmailDatabaseLogServiceProvider::class,
+    \ShvetsGroup\LaravelEmailDatabaseLog\src\LaravelEmailDatabaseLog\LaravelEmailDatabaseLogServiceProvider::class,
 ],
 ```
 

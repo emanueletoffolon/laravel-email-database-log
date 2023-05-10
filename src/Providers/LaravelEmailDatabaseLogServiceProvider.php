@@ -1,6 +1,6 @@
 <?php
 
-namespace ShvetsGroup\LaravelEmailDatabaseLog;
+namespace EmanueleToffolon\LaravelEmailDatabaseLog\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +24,8 @@ class LaravelEmailDatabaseLogServiceProvider extends ServiceProvider
     public function register()
     {
 	    $this->app->register(LaravelEmailDatabaseLogEventServiceProvider::class);
+
+        $this->loadMigrationsFrom(__DIR__.'/../../migrations');
 
 	    if ($this->app->runningInConsole()) {
 		    $this->publishes([
